@@ -1,0 +1,17 @@
+---
+- name: Create VIMRC File
+  hosts: workstation
+  vars:
+    vimrc_location: /home/student/.vimrc
+    owner_name: student
+    group_name: student
+
+  tasks:
+
+    - name: Copy VIMRC File
+      ansible.builtin.copy:
+        src: files/vimrc
+        dest: "{{ vimrc_location }}"
+        backup: true
+        owner: "{{ owner_name }}"
+        group: "{{ group_name }}"

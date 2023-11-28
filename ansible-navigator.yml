@@ -1,0 +1,14 @@
+---
+ansible-navigator:
+  ansible:
+    config:
+      path: ./ansible.cfg
+  execution-environment:
+    image: localhost/rhci_ee:latest
+    pull:
+      policy: missing
+  logging:
+    file: /dev/null
+  mode: stdout
+  playbook-artifact:
+    enable: false
