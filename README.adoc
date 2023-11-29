@@ -37,13 +37,13 @@ You must be in command-mode in VIM to change the settings and control how VIM wo
 ----
 
 * Turn on/off Whitespace at End-of-Line (EOL)
-
++
 .Toggle on Whitespace at EOL
 [source,bash]
 ----
 :set list
 ----
-
++
 .Toggle off Whitespace at EOL
 [source,bash]
 ----
@@ -51,13 +51,13 @@ You must be in command-mode in VIM to change the settings and control how VIM wo
 ----
 
 * Turn on/off Cursor Line
-
++
 .Toggle on Cursor Line
 [source,bash]
 ----
 :set cursorline
 ----
-
++
 .Toggle off Cursor Line
 [source,bash]
 ----
@@ -65,17 +65,27 @@ You must be in command-mode in VIM to change the settings and control how VIM wo
 ----
 
 * Setting Color Column Guides
-
-Previous *.vimrc* files I've had the color column guides enabled by default, now, I use the indentation.
-
++
 .Toggle on Color Column Guides
 [source,bash]
 ----
 :set cc=3,5,7,9,11,13,15
 ----
-
++
 .Toggle off Color Column Guides
 [source,bash]
 ----
 :set cc=
 ----
+
+[NOTE]
+====
+Plugins used have been forked to my repositories. Original repository sources can be found ...
+
+* *ALE* - https://github.com/dense-analysis/ale
+* *IndentLine (archived)* - https://github.com/Yggdroot/indentLine
+* *VIM YAML Folds* https://github.com/pedrohdz/vim-yaml-folds
+
+* https://www.arthurkoziel.com/setting-up-vim-for-yaml/
+
+====
