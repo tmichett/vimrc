@@ -2,11 +2,26 @@
 - name: Create VIMRC File
   hosts: workstation
   vars:
-    vimrc_location: /home/student/.vimrc
+    user_home: /home/student
+    vimrc_location: "{{ user_home }}/.vimrc"
+    yaml_lint_config: "{{ user_home }}/.config/yamllint/"
     owner_name: student
     group_name: student
 
   tasks:
+
+    - name: Install Packages (yamllint)
+      ansible.builtin.dnf:
+        name: yamllint
+        state: latest
+
+    - name: Check for YAMLLinr Config file (yamllint)
+      ansible.builtin.file:
+        path: "{{  yaml_lint_config }}"
+        state: directory
+        mode: '0755'
+        owner: "{{ owner_name }}"
+        group: "{{ group_name }}"
 
     - name: Copy VIMRC File
       ansible.builtin.copy:
@@ -15,3 +30,38 @@
         backup: true
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
+
+    - name: Copy YAMLLINT Config File
+      ansible.builtin.copy:
+        src: files/yamllint_config
+        dest: "{{  yaml_lint_config }}/config"
+        backup: true
+        owner: "{{ owner_name }}"
+        group: "{{ group_name }}"
+
+    - name: Create VIM Plugin Directorie
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+        owner: "{{ owner_name }}"
+        group: "{{ group_name }}"
+      loop:
+        - "{{ user_home }}/.vim/pack/git-plugins/start/ale"
+        - "{{ user_home }}/.vim/pack/git-plugins/start/indentLine"
+
+#### Clone VIM Plugin Github Repositories to System
+
+    - name: Create VIM Plugin for Indenting
+      ansible.builtin.git:
+        repo: https://github.com/tmichett/indentLine.git
+        dest: "{{ user_home }}/.vim/pack/vendor/start/indentLine"
+
+
+    - name: Create VIM Plugin for Syntax Checking
+      ansible.builtin.git:
+        repo: https://github.com/tmichett/ale.git
+        dest: "{{ user_home }}/.vim/pack/git-plugins/start/ale"
+
+    - name: Change ownership
+      ansible.builtin.shell: chown -R {{ owner_name }}:{{ owner_name }} {{ user_home }}/.vim/
