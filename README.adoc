@@ -15,13 +15,13 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 nu expandtab cursorline
 You must be in command-mode in VIM to change the settings and control how VIM works.
 
 * Turning on/off Line numbers
-
++
 .Turn off Line Numbers
 [source,bash]
 ----
 :set nonu
 ----
-
++
 .Turn on Line Numbers
 [source,bash]
 ----
@@ -29,7 +29,7 @@ You must be in command-mode in VIM to change the settings and control how VIM wo
 ----
 
 * Turning on/off Column/Indention Guides
-
++
 .Toggle on/off Column/Indention Guides
 [source,bash]
 ----
