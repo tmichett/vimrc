@@ -11,7 +11,7 @@
   tasks:
 
     - name: Install Packages (yamllint)
-      ansible.builtin.pip:
+      ansible.builtin.dnf:
         name: yamllint
         state: latest
 
