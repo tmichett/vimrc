@@ -65,7 +65,7 @@
     - name: Create VIM Plugin for Syntax Checking
       ansible.builtin.git:
         repo: https://github.com/tmichett/ale.git
-        dest: "{{ user_home }}/.vim/pack/vendor/start/ale"
+        dest: "{{ user_home }}/.vim/pack/git-plugins/start/ale"
 
     - name: Change ownership
       ansible.builtin.shell: chown -R {{ owner_name }}:{{ owner_name }} {{ user_home }}/.vim/
