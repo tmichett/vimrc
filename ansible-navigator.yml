@@ -4,7 +4,7 @@ ansible-navigator:
     config:
       path: ./ansible.cfg
   execution-environment:
-    image: localhost/rhci_ee:latest
+    image: hub.lab.example.com/ee-supported-rhel8:latest 
     pull:
       policy: missing
   logging:
